@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
+
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body{
+
+    display: flex;    
+    height: 100%;  
+    justify-content: center;    
+    align-items: center;   
+    background: #0c0ce94d;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 4%;
+    margin-bottom: 4%;
+
+}
+.sub-container{
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    
+}
+.container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;    
+}
+.container .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 30px;
+    background: #9B59B6;
+    
+}
+
+.form-image {
+    max-height: 400px;
+    height: 400px;
+    max-width: 700px;
+    width: 100%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: #fde3a7d7;
+    padding: 1rem;    
+} 
+
+.form-image .pdf{
+    width: 100%;
+    height: 100%;
+}   
+
+.container form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+form .razon-details .input-box{
+    margin-top: 15px;
+    
+}
+
+.user-details .input-box .details{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.user-details .input-box2 .details{
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.user-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.user-details .input-box input:focus, .razon-details .input-box input:focus,
+.user-details .input-box input:valid, .razon-details .input-box input:valid{
+    border-color: #9B59B6;
+}
+
+.razon-details .input-box .details{
+    display: block;
+    font-weight: 500;
+    margin-bottom: Spx;
+}
+.razon-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+form .button{
+    height: 45px;
+    margin: 45px 0;
+}
+    
+form .button input{
+height: 100%;
+width: 100%;
+outline: none;
+color: #fff;
+font-size: 18px;
+border: none;
+font-weight: 500;
+border-radius: 5px;
+letter-spacing: 1px;
+background: #7fc32d;
+}
+
+form .button input:hover{
+    background: #a3cc55;
+    cursor: pointer;
+}
+
+.titles{
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+
+}
+.titles .sub-title{
+    align-content: right;
+
+}
+@media (max-width:584px){
+    .container{
+        max-width: 100%;
+    }
+    form .user-details .input-box{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+        
+    form .razon-details{
+        width: 100%;
+    }
+    .container form .user-details, .razon-details{
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    .user-details::-webkit-scrollbar{
+        width: 0;
+    }
+        
+}
