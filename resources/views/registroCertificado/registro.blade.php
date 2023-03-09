@@ -19,13 +19,16 @@
         <h1>Registro de certificados</h1><br>
 
         <div class="row">              {{-- Crear nuevo registro --}}
-            <div class="col">
+            {{-- <div class="col">
                 <a href="{{url('certificado/create')}}" class="btn btn-primary">Registrar certificado</a>
-            </div>
+            </div> --}}
 
             <div class="col">          {{-- Vista del Qr generado y boton de descarga --}}
                 <img alt="Código QR" id="qrimagen" src="{{URL::asset('Recursos/qrCodeITEL.png')}}" style="width: 100px; height: 100px;">
                 <button id="btn" type="button" class="btn btn-success">Descargar</button>
+            </div>
+            <div>
+                <br>
             </div>
         </div>
 
@@ -44,7 +47,7 @@
                     <th scope="col" >Nombre del archivo</th>
                     <th scope="col" >Estado</th>
                     <th scope="col" >Generar QR</th> {{-- documento --}}
-                    <th scope="col" >Editar</th>
+                    <th scope="col" >Subir archivo</th>
                     <th scope="col" >Borrar </th>
                 </tr>
             </thead>
@@ -57,7 +60,7 @@
                     <td>{{$item->car_nombre}}</td>
                     <td>{{$item->est_nombre}}</td>
                     <td>{{$item->est_apellido}}</td>
-                    <td>"loading..."</td>
+                    <td>{{$item->est_cod2}}</td>
                     <td>{{$item->detalldoc_codgen}}</td>
                     <td>{{$item->tram_obervacion}}</td>
                     <td>{{$item->detalldoc_Nomarchivo}}</td>
@@ -78,7 +81,7 @@
                     </td>
 
                     <td>    {{-- Delete --}}
-                        <form action="{{ url('/certificado/'.$item->certqr_id ) }}" method="post">
+                        <form action="{{ url('/certificado/'.$item->tram_id ) }}" method="post">
                             @csrf    
                             {{ method_field('DELETE')}}
                             {{-- @method("DELETE") --}}

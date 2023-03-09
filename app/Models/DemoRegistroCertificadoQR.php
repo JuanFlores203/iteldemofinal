@@ -12,11 +12,12 @@ class DemoRegistroCertificadoQR extends Model
     protected $table = "tramite";
     protected $primaryKey="tram_id";
 
-    /*public $timestamps=True;
+    public $timestamps=False;
 
     protected $fillable=[
         'tram_id',
         'tram_estado',
+        'est_cod',
         'tram_observacion',
         'tram_updated_at',
         'detalldoc_Nomarchivo',
@@ -25,7 +26,7 @@ class DemoRegistroCertificadoQR extends Model
         'est_nombre',
         'est_apellido',
         'detalledoc_cod2'
-    ];*/
+    ];
 
 
 }

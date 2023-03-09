@@ -32,6 +32,7 @@ class RegistroCertificadoQRController extends Controller
                 'carrera.car_nombre',
                 'estudiante.est_nombre',
                 'estudiante.est_apellido',
+                'estudiante.est_cod2',
                 'detalle_documento.detalldoc_cod2'
         ]);
         return view('registroCertificado.registro',compact('data'));
@@ -148,6 +149,7 @@ class RegistroCertificadoQRController extends Controller
         ->where('tramite.tram_id','=',$id)
         ->get([
                 'tramite.tram_id',
+                'tramite.est_cod',
                 'tramite.tram_estado',
                 'tramite.tram_obervacion',
                 'tramite.tram_updated_at',
@@ -156,11 +158,12 @@ class RegistroCertificadoQRController extends Controller
                 'carrera.car_nombre',
                 'estudiante.est_nombre',
                 'estudiante.est_apellido',
+                'estudiante.est_cod2',
                 'detalle_documento.detalldoc_cod2'
         ]);
         //echo($RegistroCertificadoQR);
         $data2 = DemoRegistroCertificadoQR::findOrFail($id);
-        return view('registroCertificado.edit', compact('data','data2'));
+        return view('registroCertificado.edit', compact('data2','data'));
 
         //$data = DemoRegistroCertificadoQR::findOrFail($id);
 
@@ -176,28 +179,30 @@ class RegistroCertificadoQRController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $datos = request()->except(['_token','_method']);
-        $code= $id.substr($request->nombre_est, 0, 2).substr($request->apellido_est, 0, 2);
+        $datos = request()->except(['tram_updated_at','_token','_method']);
+        // $code= $id.substr($request->est_nombre, 0, 2).substr($request->apellido_est, 0, 2);
 
-        $data = RegistroCertificadoQR::findOrFail($id);
-        
-        if(!empty($request->documento)){
-            $file=$request->documento;
+        $data = DemoRegistroCertificadoQR::findOrFail($id);
+        //$code= $id.$data->est_cod;
+
+        if(!empty($request->detalldoc_Nomarchivo)){
+            $file=$request->detalldoc_Nomarchivo;
             $filename=$file->getClientOriginalName();
             // // $request->file->move(public_path().'/Archivos/',$filename);
             // //$data->documento=$filename;
             // $data->documento=$request->documento->storeAs('Archivos',$filename);
-            Storage::delete('public/Archivos/'.$data->documento);
-            $request->file('documento')->storeAs('public/Archivos',$filename); 
-            $datos['documento']=$filename;            
+            $oldFile = $data->detalldoc_Nomarchivo;
+            Storage::delete('public/Archivos/'.$oldFile);
+            $request->file('detalldoc_Nomarchivo')->storeAs('public/Archivos',$filename); 
+            $datos['detalldoc_Nomarchivo']=$filename;            
         }
         else{
-            
+            return redirect("certificado/$id/edit");
         }
-        $datos['gen_code']=$code;
-        RegistroCertificadoQR::where('certqr_id',$id)->update($datos);
+
+        DemoRegistroCertificadoQR::where('tram_id',$id)->update($datos);
 //             
-        $RegistroCertificadoQR = RegistroCertificadoQR::findOrFail($id);
+        //$data2 = DemoRegistroCertificadoQR::findOrFail($id);
         //return view('registroCertificado.edit', compact('RegistroCertificadoQR')); nota: esta es la version cvr
         return redirect("certificado/$id/edit")->with('save','ok');                     //nota: esta para el alert de confirmación
     }
@@ -211,7 +216,7 @@ class RegistroCertificadoQRController extends Controller
      */
     public function destroy($id) //RegistroCertificadoQR $registroCertificadoQR
     {
-        RegistroCertificadoQR::destroy($id);
+        DemoRegistroCertificadoQR::destroy($id);
         //echo($id);
         return redirect('certificado')->with('eliminar','ok');
     }

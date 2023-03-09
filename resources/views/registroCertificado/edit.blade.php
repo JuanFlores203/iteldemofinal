@@ -25,14 +25,25 @@
                     </a>
                 </div>
             </div>
-            
+
+            <form>
+                @include('registroCertificado.form')
+            </form>
+                
             {{-- {{ url('/certificado/'.$RegistroCertificadoQR->certqr_id ) }} --}}
-            <form class="row g-3 needs-validation" action=" " method="post" enctype="multipart/form-data" >
+            <form class="row g-3 needs-validation" action="{{ url('/certificado/'.$data2->tram_id ) }}" method="post" enctype="multipart/form-data" >
                 
                     @csrf    
                     {{ method_field('PATCH') }} 
-                
-                    @include('registroCertificado.form')            
+                    <div class="input-box2">
+                        <label for="disabledTextInput" class="details">Archivo:</label> <br>
+                        <input type="file" id="detalldoc_Nomarchivo" value="{{ $data2->detalldoc_Nomarchivo }}" name="detalldoc_Nomarchivo" class="form-control-file" >
+                    </div> 
+                    
+                    <div class="button">
+                        <input type="submit" class="btn btn-success" value="Guardar" id="submit-form-edit" style="display: none;"">
+                        <input onclick="submitTheForm()" class="btn btn-success" value="Guardar">
+                    </div>                            
 
                     
             </form>
@@ -41,7 +52,7 @@
         </div>
         <div class="form-image">
             {{-- <iframe class="pdf" src="/Archivos/{{ $RegistroCertificadoQR->documento }}"></iframe>                     nota: cuando el pdf se guarda en la carpeta PUBLIC --}} 
-            {{-- <iframe class="pdf" src="{{asset('storage').'/Archivos/'.$RegistroCertificadoQR->documento }}"></iframe> --}}  {{--nota: cuando el pdf se guarda en la carpeta STORAGE--}}
+            <iframe class="pdf" src="{{asset('storage').'/Archivos/'.$data2->detalldoc_Nomarchivo }}"></iframe>  {{--nota: cuando el pdf se guarda en la carpeta STORAGE--}}
             
         </div>
     </div>
