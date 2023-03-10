@@ -63,7 +63,10 @@
                     <td>{{$item->est_cod2}}</td>
                     <td>{{$item->detalldoc_codgen}}</td>
                     <td>{{$item->tram_obervacion}}</td>
-                    <td>{{$item->detalldoc_Nomarchivo}}</td>
+                    <td style="color: {{ $item->detalldoc_Nomarchivo ? 'green' : 'orange' }}"><b>
+                        {{ $item->detalldoc_Nomarchivo ?: 'N/A' }}</b>
+                    </td>
+                    {{-- <td style="background-color: {{ $item->detalldoc_Nomarchivo ? '#54B435' : 'orange' }}"><b>{{$item->detalldoc_Nomarchivo}}</b></td> --}}
                     <td>{{$item->tram_estado}}</td>
 
                     <td> {{-- Generar qr --}}
@@ -161,8 +164,8 @@
         @if (session('eliminar') == 'ok')
             <script>
                 Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
+                'Eliminado!',
+                'Tu registro a sido eliminado.',
                 'success'
                 )
             </script>

@@ -8,3 +8,8 @@
 .container{
     padding-top: 5%;
 }
+
+.empty-field {
+    background-color: orange;
+  }
+

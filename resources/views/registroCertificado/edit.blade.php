@@ -72,17 +72,17 @@
 
         function submitTheForm(){
             Swal.fire({
-                title: 'Do you want to save the changes?',
+                title: '¿Quieres guardar los cambios?',
                 showDenyButton: true,
                 showCancelButton: true,
-                confirmButtonText: 'Save',
-                denyButtonText: `Don't save`,
+                confirmButtonText: 'Guardar',
+                denyButtonText: `No guardar`,
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     document.getElementById("submit-form-edit").click();                    
                 } else if (result.isDenied) {
-                    Swal.fire('Changes are not saved', '', 'info')
+                    Swal.fire('Los cambios no se guardaron', '', 'info')
                 }
             })
         }
