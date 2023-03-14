@@ -250,4 +250,50 @@ class RegistroCertificadoQRController extends Controller
 
         //return view('registroCertificado.edit', compact('data'));
     }
+
+    public function cerDownload($id,$num)
+    {
+        $data=DemoRegistroCertificadoQR::join('detalle_documento', 'detalle_documento.detalldoc_id', '=', 'tramite.detalldoc_id')
+        ->join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
+        ->join('estudiante', 'estudiante.est_cod', '=', 'tramite.est_cod')
+        ->where('tramite.tram_id','=',$id)
+        ->get([
+                'tramite.tram_id',
+                'tramite.est_cod',
+                'tramite.tram_estado',
+                'tramite.tram_obervacion',
+                'tramite.tram_updated_at',
+                'tramite.detalldoc_Nomarchivo',
+                'tramite.detalldoc_codgen',
+                'carrera.car_nombre',
+                'estudiante.est_nombre',
+                'estudiante.est_apellido',
+                'estudiante.est_cod2',
+                'detalle_documento.detalldoc_cod2'
+        ]);
+        //echo($RegistroCertificadoQR);
+        //$data2 = DemoRegistroCertificadoQR::findOrFail($id);
+        //return view('TBS.ejemplo', compact('data2','data'));
+
+
+        echo("HOLA");
+        echo($id);
+        echo($num);
+
+        switch ($num) {
+            case 1:
+                echo "num es igual a 0";
+                break;
+            case 2:
+                echo "num es igual a 2";
+                break;
+            case 2:
+                echo "i es igual a 2";
+                break;
+            default:
+                echo "por defecto";
+        }
+        return redirect()->back();
+        
+    }
 }

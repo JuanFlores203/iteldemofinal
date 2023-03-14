@@ -52,3 +52,4 @@ Route::get('/certificado', function () {
 Route::resource('certificado', RegistroCertificadoQRController::class);
 
 Route::get('/certificado/{id}/cerGenerator', [RegistroCertificadoQRController::class,'cerGenerator']);  //create
+Route::get('/certificado/{id}/cerDownload/{num}', [RegistroCertificadoQRController::class,'cerDownload']);  //create

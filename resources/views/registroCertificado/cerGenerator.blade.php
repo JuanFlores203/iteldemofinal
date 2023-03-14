@@ -68,7 +68,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Certificado 01</h4>
                   <p class="card-text">Modelo para carreras </p>
-                  <a href="#" class="boton-card">Descargar</a>
+                  <a href="{{ url('/certificado/'.$item->tram_id.'/cerDownload/1') }}" class="boton-card">Descargar</a>
                 </div>
             </div>
           
@@ -78,7 +78,7 @@
               <div class="card-body">
                 <h4 class="card-title">Certificado 01</h4>
                 <p class="card-text">Modelo para carreras </p>
-                <a href="#" class="boton-card">Descargar</a>
+                <a href="{{ url('/certificado/'.$item->tram_id.'/cerDownload/2') }}"" class="boton-card">Descargar</a>
               </div>
           </div>
 
