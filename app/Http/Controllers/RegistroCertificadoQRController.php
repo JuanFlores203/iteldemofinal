@@ -220,4 +220,34 @@ class RegistroCertificadoQRController extends Controller
         //echo($id);
         return redirect('certificado')->with('eliminar','ok');
     }
+
+
+    public function cerGenerator($id)
+    {
+        $data=DemoRegistroCertificadoQR::join('detalle_documento', 'detalle_documento.detalldoc_id', '=', 'tramite.detalldoc_id')
+        ->join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
+        ->join('estudiante', 'estudiante.est_cod', '=', 'tramite.est_cod')
+        ->where('tramite.tram_id','=',$id)
+        ->get([
+                'tramite.tram_id',
+                'tramite.est_cod',
+                'tramite.tram_estado',
+                'tramite.tram_obervacion',
+                'tramite.tram_updated_at',
+                'tramite.detalldoc_Nomarchivo',
+                'tramite.detalldoc_codgen',
+                'carrera.car_nombre',
+                'estudiante.est_nombre',
+                'estudiante.est_apellido',
+                'estudiante.est_cod2',
+                'detalle_documento.detalldoc_cod2'
+        ]);
+        //echo($RegistroCertificadoQR);
+        $data2 = DemoRegistroCertificadoQR::findOrFail($id);
+        return view('registroCertificado.cerGenerator', compact('data2','data'));
+
+        //$data = DemoRegistroCertificadoQR::findOrFail($id);
+
+        //return view('registroCertificado.edit', compact('data'));
+    }
 }

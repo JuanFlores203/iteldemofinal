@@ -1,18 +1,6 @@
 @extends('layouts.plantilla3')
 
-@section('css')
-    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    {{--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css"> --}}
-    {{-- showing alert --}}
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-@endsection
-
-
-
-
-@section('title','Ingresar datos a tabla')
+@section('title','Registro')
 
 @section('content')
     <div class="container">
@@ -49,6 +37,7 @@
                     <th scope="col" >Generar QR</th> {{-- documento --}}
                     <th scope="col" >Subir archivo</th>
                     <th scope="col" >Borrar </th>
+                    <th scope="col" >Certificado </th>
                 </tr>
             </thead>
             <tbody>
@@ -95,6 +84,12 @@
                             {{--<button onclick="submitTheForm()" class="" {{--onclick="return confirm('¿Quieres borrar?')"--}}    {{--style="border: 0; Background-color: transparent;">   
                                     {{--<box-icon name='message-alt-x' border="circle" size="md" color="#D61C4E"></box-icon>
                             </button>--}}                                                
+                    </td>
+
+                    <td>
+                        <a href="{{ url('/certificado/'.$item->tram_id.'/cerGenerator') }}">
+                            <box-icon name='file-blank' rotate='90' border="circle" size="md" ></box-icon>             {{-- <img src="{{URL::asset('Recursos/iconEdit.png')}}"  style="width: 50%"> --}}
+                        </a>
                     </td>
 
                 </tr>   

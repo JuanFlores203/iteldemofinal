@@ -1,3 +1,5 @@
+<!-- NOTA: ESTO PODEMOS BORRAR CON NORMALIDAD -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,3 +40,66 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Example row of columns -->
+  <div class="row">
+              
+    <div class="col-md-3 mb-3">
+      <div class="card" style="width: 18rem;">
+          <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">Certificado 01</h4>
+            <p class="card-text">Modelo para carreras </p>
+            <a href="#" class="btn btn-primary">Descargar</a>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="card" style="width: 18rem;">
+          <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">Certificado 02</h4>
+            <p class="card-text">Modelo para cursos libres</p>
+            <a href="#" class="btn btn-primary">Descargar</a>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="card" style="width: 18rem;">
+          <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">Certificado 01</h4>
+            <p class="card-text">Modelo para carreras </p>
+            <a href="#" class="btn btn-primary">Descargar</a>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="card" style="width: 18rem;">
+          <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">Certificado 02</h4>
+            <p class="card-text">Modelo para cursos libres</p>
+            <a href="#" class="btn btn-primary">Descargar</a>
+          </div>
+      </div>
+    </div>
+
+  </div>
