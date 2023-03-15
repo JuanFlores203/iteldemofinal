@@ -7,6 +7,7 @@ use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\RegistroCertificadoQRController;
 use App\Http\Controllers\RegistroController;
 use App\Models\Certificado_qr;
+use App\Models\RegistroCertificadoQR;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,9 @@ use App\Models\Certificado_qr;
 Route::get('/', HomeController::class );
 
 //Route::get('certificado', [CertificadoController::class,'index']);  //home
-Route::get('certificado/validacion/{gen_code?}', [CertificadoController::class,'show']); 
-//Route::get('certificado/validacion/{gen_code?}', [CertificadoController::class,'create']); 
-Route::get('download/{file}', [CertificadoController::class,'download']);  
+Route::get('certificado/validacion/{gen_code?}', [CertificadoController::class,'show']);
+//Route::get('certificado/validacion/{gen_code?}', [CertificadoController::class,'create']);
+Route::get('download/{file}', [CertificadoController::class,'download']);
 
 //Route::get('certificado/registro', [CertificadoController::class,'registro']);***
     // Route::get('certificado/registrar', [CertificadoController::class,'create']);
@@ -36,7 +37,7 @@ Route::get('download/{file}', [CertificadoController::class,'download']);
     // Route::get('certificado/registro', [CertificadoController::class,'registro']);
     // Route::post('certificado/uploaddata', [CertificadoController::class,'store']);
     // Route::post('certificado/delete/{id}', [CertificadoController::class,'destroy']);
-//Route::post('uploaddata', [CertificadoController::class,'store']);  
+//Route::post('uploaddata', [CertificadoController::class,'store']);
 //Route::post('uploaddata',[CertificadoController::class,'insertar']);
 
 
@@ -50,5 +51,7 @@ Route::get('/certificado', function () {
     });
 //Route::get('/certificado/create', [RegistroCertificadoQRController::class,'create']);  //create
 Route::resource('certificado', RegistroCertificadoQRController::class);
+
+Route::get('/test/{id}', [RegistroCertificadoQRController::class, 'generatordocx'])->name('generatordoc');
 
 Route::get('/certificado/{id}/cerGenerator', [RegistroCertificadoQRController::class,'cerGenerator']);  //create

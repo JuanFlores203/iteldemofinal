@@ -12,7 +12,7 @@ class DemoRegistroCertificadoQR extends Model
     protected $table = "tramite";
     protected $primaryKey="tram_id";
 
-    public $timestamps=False;
+    public $timestamps=false;
 
     protected $fillable=[
         'tram_id',
