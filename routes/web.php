@@ -8,6 +8,8 @@ use App\Http\Controllers\RegistroCertificadoQRController;
 use App\Http\Controllers\RegistroController;
 use App\Models\Certificado_qr;
 
+use App\Http\Controllers\Document;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,3 +55,4 @@ Route::resource('certificado', RegistroCertificadoQRController::class);
 
 Route::get('/certificado/{id}/cerGenerator', [RegistroCertificadoQRController::class,'cerGenerator']);  //create
 Route::get('/certificado/{id}/cerDownload/{num}', [RegistroCertificadoQRController::class,'cerDownload']);  //create
+//Route::get('/document', Document::class)->name('document');

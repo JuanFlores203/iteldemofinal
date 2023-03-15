@@ -7,6 +7,8 @@ use App\Models\DemoRegistroCertificadoQR;
 use App\Models\democerQR;
 use Illuminate\Http\Request;
 
+use PhpOffice\PhpWord\TemplateProcessor;
+
 use Illuminate\Support\Facades\Storage;
 
 class RegistroCertificadoQRController extends Controller
@@ -283,6 +285,22 @@ class RegistroCertificadoQRController extends Controller
         switch ($num) {
             case 1:
                 echo "num es igual a 0";
+                $templateProcessor = new TemplateProcessor('template2.docx');
+                $templateProcessor->setValue('firstname', 'Sohail');
+                $templateProcessor->setValue('lastname', 'Saleem');
+                $templateProcessor->setValue('fecha', '15/03/2023');
+                $templateProcessor->saveAs('Result2.docx');
+                
+                return response()->download('Result2.docx')->deleteFileAfterSend(true);
+
+                // $pathTosave = 'result_surat.docx';
+                // $templateProcessor->saveAs($pathTosave) ;
+
+                // header('Content-Description: File Transfer');
+                // header('Content-Disposition: attachment; filename=result_surat.docx');
+                // header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+                // readfile($pathTosave);
+
                 break;
             case 2:
                 echo "num es igual a 2";
@@ -293,6 +311,8 @@ class RegistroCertificadoQRController extends Controller
             default:
                 echo "por defecto";
         }
+
+        
         return redirect()->back();
         
     }
