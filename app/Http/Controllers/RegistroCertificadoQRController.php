@@ -255,55 +255,24 @@ class RegistroCertificadoQRController extends Controller
 
     public function generatordocx($id)
     {
-        // $TBS = new clsTinyButStrong();
-        // $TBS->PlugIn(-1, 'clsOpenTBS');
-
-        // $nombre1 = 'Nombre1';
-        // $nombre2 = 'Nombre2';
-
-        // $TBS->LoadTemplate('Plantilla.docx', 'already_utf8');
-
-        // $TBS->MergeField('pro.nombreprofesor', $nombre1);
-        // $TBS->MergeField('pro.nombredirector', $nombre2);
-
-        // $TBS->PlugIn('clsOpenTBS.DeleteComments');
-
-        // $out_file = 'asdasda.docx';
-        // $TBS->Show(1, $out_file);
-        // return Storage::download('http://localhost:8000/plantilla/Plantilla.docx');
-        // return response()->download(storage_path("app/public/plantilla/Plantilla.docx"));
-
-        // $phpWord = new \PhpOffice\PhpWord\PhpWord();
-
-        // $section = $phpWord->addSection();
-
-        // // Saving the document as OOXML file...
-        // $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-        // $objWriter->save('helloWorld.docx');
-
-
         $code = democerQR::query()->where('tram_id', $id)->first()->detalldoc_codgen;
 
         $with = 200;
 
-        $image =  QrCode::format('png')->size($with)->generate('http://localhost:8000/certificado/validacion/' . $code);
+        $image =
+         QrCode::format('png')
+         ->size($with)
+         ->generate('http://localhost:8000/certificado/validacion/' . $code);
 
         $output_file = time() . '.png';
+        //019720317209.png
 
-        // dd($image);
         Storage::disk('public')->put($output_file, $image);
 
-        // $path = file_get_contenaahts( 'http://localhost:8000/storage/' . $output_file);
         $path = Storage::path('public/' . $output_file);
-
-        // dd($path);
+        // C:\Users\victo\Documents\projects\iteldemofinal\storage\app\public\
 
         $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla.docx');
-
-        $phpWord->setValues([
-            'nombredirector' => 'test1',
-            'nombreprofesor' => 'test2'
-        ]);
 
         $phpWord->setImageValue(
             'qrcode',
@@ -315,15 +284,19 @@ class RegistroCertificadoQRController extends Controller
             ]
         );
 
+        $phpWord->setValues([
+            'nombredirector' => 'test1',
+            'nombreprofesor' => 'test2'
+        ]);
+
+        // Nombre del archivo .docx
         $nombre = time() . '.docx';
+
         $phpWord->saveAs($nombre);
 
-        header('Content-Description: File Transfer');
-        header("Content-Disposition: attachment; filename=" . $nombre);
-        header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        //Funcion para eliminar el archivo png del codigo QR
+        Storage::delete('public/' . $output_file);
 
-        readfile($nombre);
-
-        // if(file_exists($nombre)) return response()->download(storage_path("app/public/" . $nombre));
+        return response()->download($nombre)->deleteFileAfterSend(true);
     }
 }
