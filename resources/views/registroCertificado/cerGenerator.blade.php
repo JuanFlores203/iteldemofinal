@@ -4,27 +4,27 @@
 
 @section('content')
   <div class="container">
-    
-      <div class="container-seccion-titulo">      
-        <h4 class="navbar-brand">Generador de certificado</h4>     
+
+      <div class="container-seccion-titulo">
+        <h4 class="navbar-brand">Generador de certificado</h4>
       </div>
 
       <div class="container-seccion-menu2">
-            
+
         <a href="{{ url('/certificado/') }}" id="mtd4" class="mtd4" onclick="cambiar4()">
           <box-icon name='x-circle' border="circle" size="md" color="#D61C4E"></box-icon>
         </a>
       </div>
-      
+
       <div class="container-seccion" >
-      
+
 
           <div class="container-table" role="grid" aria-describedby="dataTable_info" style="overflow-x: auto;">
             <table class="table-my-0" id="myTable">
                 <thead class="thead">
                     <tr>
                         <th scope="col" >ID</th>
-                        <th scope="col" >Fecha de emisión(update)</th>                      
+                        <th scope="col" >Fecha de emisión(update)</th>
                         <th scope="col" >Código de certificado</th>
                         <th scope="col" >Razón</th>
                         <th scope="col" >Nombre</th>
@@ -52,42 +52,42 @@
                               {{ $item->detalldoc_Nomarchivo ?: 'N/A' }}</b>
                           </td>
                           {{-- <td style="background-color: {{ $item->detalldoc_Nomarchivo ? '#54B435' : 'orange' }}"><b>{{$item->detalldoc_Nomarchivo}}</b></td> --}}
-                          <td>{{$item->tram_estado}}</td>                   
+                          <td>{{$item->tram_estado}}</td>
 
-                      </tr>   
-                    @endforeach                    
+                      </tr>
+                    @endforeach
                 </tbody>
             </table>
           </div>
       </div>
 
       <div class="container-cards">
-          
+
             <div class="card">
                 <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h4 class="card-title">Certificado 01</h4>
+                  <h4 class="card-title">Diploma por carrera</h4>
                   <p class="card-text">Modelo para carreras </p>
-                  <a href="{{ url('/certificado/'.$item->tram_id.'/cerDownload/1') }}" class="boton-card">Descargar</a>
+                  <a href="{{url('/test/'. $id . '/1')}}" class="boton-card">Descargar</a>
                 </div>
             </div>
-          
+
 
             <div class="card">
               <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
               <div class="card-body">
-                <h4 class="card-title">Certificado 01</h4>
+                <h4 class="card-title">Asistencia y Aprobación </h4>
                 <p class="card-text">Modelo para carreras </p>
-                <a href="{{ url('/certificado/'.$item->tram_id.'/cerDownload/2') }}"" class="boton-card">Descargar</a>
+                <a href="{{url('/test/'. $id . '/2')}}" class="boton-card">Descargar</a>
               </div>
           </div>
 
           <div class="card">
             <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h4 class="card-title">Certificado 01</h4>
+              <h4 class="card-title">Certificado Modular</h4>
               <p class="card-text">Modelo para carreras </p>
-              <a href="#" class="boton-card">Descargar</a>
+              <a href="{{url('/test/'. $id . '/3')}}" class="boton-card">Descargar</a>
             </div>
           </div>
 
