@@ -66,8 +66,8 @@
             <div class="card">
                 <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h4 class="card-title">Diploma por carrera</h4>
-                  <p class="card-text">Modelo para carreras </p>
+                  <h4 class="card-title">Diploma modular</h4>
+                  <p class="card-text">Diploma por carrera </p>
                   <a href="{{url('/test/'. $id . '/1')}}" class="boton-card">Descargar</a>
                 </div>
             </div>
@@ -77,7 +77,7 @@
               <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
               <div class="card-body">
                 <h4 class="card-title">Asistencia y Aprobación </h4>
-                <p class="card-text">Modelo para carreras </p>
+                <p class="card-text">Curso libre - curso especial </p>
                 <a href="{{url('/test/'. $id . '/2')}}" class="boton-card">Descargar</a>
               </div>
           </div>
@@ -85,8 +85,8 @@
           <div class="card">
             <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h4 class="card-title">Certificado Modular</h4>
-              <p class="card-text">Modelo para carreras </p>
+              <h4 class="card-title">Certificado-Bachillerato</h4>
+              <p class="card-text">Modular </p>
               <a href="{{url('/test/'. $id . '/3')}}" class="boton-card">Descargar</a>
             </div>
           </div>
@@ -94,20 +94,30 @@
           <div class="card">
             <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h4 class="card-title">Certificado 01</h4>
-              <p class="card-text">Modelo para carreras </p>
-              <a href="#" class="boton-card">Descargar</a>
+              <h4 class="card-title">Certificado por Creditaje</h4>
+              <p class="card-text">Ciencias de la Salud </p>
+              <a href="{{url('/test/'. $id . '/4')}}" class="boton-card">Descargar</a>
             </div>
           </div>
 
           <div class="card">
             <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h4 class="card-title">Certificado 01</h4>
-              <p class="card-text">Modelo para carreras </p>
-              <a href="#" class="boton-card">Descargar</a>
+              <h4 class="card-title">Certificado-Alimentarias</h4>
+              <p class="card-text">Certificado Bachillerato para Alimentarias  </p>
+              <a href="{{url('/test/'. $id . '/5')}}" class="boton-card">Descargar</a>
             </div>
           </div>
+
+          <div class="card">
+            <img src="{{URL::asset('Recursos/cerImg.jpg')}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h4 class="card-title">Certificado por Curso</h4>
+              <p class="card-text">Certificado por curso y por carrera </p>
+              <a href="{{url('/test/'. $id . '/6')}}" class="boton-card">Descargar</a>
+            </div>
+          </div>
+          
       </div>
   </div>
 

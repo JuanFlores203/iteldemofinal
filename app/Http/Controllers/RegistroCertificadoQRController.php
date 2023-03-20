@@ -332,7 +332,7 @@ class RegistroCertificadoQRController extends Controller
 
                 break;
             case 2:
-                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificadoEstudios_AsistenciayAprobación.docx');
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificado-CursoLibre-Especial.docx');
 
                 $phpWord->setImageValue(
                     'qrcode',
@@ -355,7 +355,7 @@ class RegistroCertificadoQRController extends Controller
                 ]);
                 break;
             case 3:
-                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificadoModular.docx');
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificado-Bachillerato.docx');
 
                 $phpWord->setImageValue(
                     'qrcode',
@@ -377,6 +377,76 @@ class RegistroCertificadoQRController extends Controller
                     'anio' => date('Y')
                 ]);
                 break;
+            case 4:
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificadoPorCurso_Creditaje.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
+                break;
+            case 5:
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificado-Bachillerato-Alimentarias.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
+                break;
+            case 6:
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificadoEstudios_porCurso.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
+                break;
+
             default:
                 echo "por defecto";
         }
