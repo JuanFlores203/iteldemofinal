@@ -4,102 +4,109 @@
 
 @section('content')
     <div class="container">
-        <h1>Registro de certificados</h1><br>
+        <div class="container-seccion-titulo">
+            <br>
+            <h4 class="navbar-brand">REGISTRO DE CERTIFICADOS</h4>          
+            <br>  
+        </div>
 
-        <div class="row">              {{-- Crear nuevo registro --}}
-            {{-- <div class="col">
-                <a href="{{url('certificado/create')}}" class="btn btn-primary">Registrar certificado</a>
-            </div> --}}
+        <div class="container-qr">
+            <div class="card-qr">
+                {{-- <div > <a href="{{url('certificado/create')}}" class="btn btn-primary">Registrar certificado</a> --}}
+                    <img alt="Código QR" id="qrimagen" src="{{URL::asset('Recursos/qrCodeITEL.png')}}"> {{-- style="width: 200px; height: 200px; --}}
+                    <button id="btn" type="button" class="boton-download-qr">Descargar</button>                
+            </div>    
 
-            <div class="col">          {{-- Vista del Qr generado y boton de descarga --}}
-                <img alt="Código QR" id="qrimagen" src="{{URL::asset('Recursos/qrCodeITEL.png')}}" style="width: 100px; height: 100px;">
-                <button id="btn" type="button" class="btn btn-success">Descargar</button>
-            </div>
-            <div>
-                <br>
+        </div>
+
+        <div class="container-seccion">
+            <div class="container-table">
+                <table class="table  table-my-0" id="myTable" >
+                    <thead class="thead">
+                        <tr>
+                            <th scope="col" >ID</th>
+                            <th scope="col" >Fecha de emisión(update)</th>                      
+                            <th scope="col" >Código de certificado</th>
+                            <th scope="col" >Razón</th>
+                            <th scope="col" >Nombre</th>
+                            <th scope="col" >Apellido</th>
+                            <th scope="col" >Código estudiante</th>
+                            <th scope="col" >Código generado</th>
+                            <th scope="col" >Descripción</th>
+                            <th scope="col" >Nombre del archivo</th>
+                            <th scope="col" >Estado</th>
+                            <th scope="col" >Generar QR</th> {{-- documento --}}
+                            <th scope="col" >Subir archivo</th>
+                            <th scope="col" >Borrar </th>
+                            <th scope="col" >Certificado </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $item)
+                        <tr>
+                            <td>{{ $item->tram_id }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->tram_updated_at)->format('d-m-Y')}}</td>
+                            <td>{{$item->detalldoc_cod2}}</td>
+                            <td>{{$item->car_nombre}}</td>
+                            <td>{{$item->est_nombre}}</td>
+                            <td>{{$item->est_apellido}}</td>
+                            <td>{{$item->est_cod2}}</td>
+                            <td>{{$item->detalldoc_codgen}}</td>
+                            <td>{{$item->tram_obervacion}}</td>
+                            <td style="color: {{ $item->detalldoc_Nomarchivo ? 'green' : 'orange' }}"><b>
+                                {{ $item->detalldoc_Nomarchivo ?: 'N/A' }}</b>
+                            </td>
+                            {{-- <td style="background-color: {{ $item->detalldoc_Nomarchivo ? '#54B435' : 'orange' }}"><b>{{$item->detalldoc_Nomarchivo}}</b></td> --}}
+                            <td>{{$item->tram_estado}}</td>
+        
+                            <td> {{-- Generar qr --}}
+                                <a href="#" id="mtd4" class="mtd4" onclick="cambiar4()">
+                                    <box-icon name='qr' border="circle" size="md" color="#31C6D4"></box-icon>               {{-- <img src="{{URL::asset('Recursos/iconQRgenerator2.png')}}"  style="width: 50%"> --}}                            
+                                </a>
+                                
+                            </td>
+        
+                            <td>    {{-- Editar --}}                        
+                                <a href="{{ url('/certificado/'.$item->tram_id.'/edit') }}">
+                                    <box-icon name='edit' border="circle" size="md" ></box-icon>             {{-- <img src="{{URL::asset('Recursos/iconEdit.png')}}"  style="width: 50%"> --}}
+                                </a>
+                                
+                            </td>
+        
+                            <td>    {{-- Delete --}}
+                                <form action="{{ url('/certificado/'.$item->tram_id ) }}" method="post">
+                                    @csrf    
+                                    {{ method_field('DELETE')}}
+                                    {{-- @method("DELETE") --}}
+                                    
+                                    <button class="btn-Eliminar" type="submit" onclick="return confirm('¿ Estas seguro de eliminar este registro ?')"  ><box-icon name='message-alt-x' border="circle" size="md" color="#D61C4E"></box-icon ></button>
+                                </form>    
+                                    {{--<input type="submit" id="submit-form" value="Submit Form" style="display: none;"/>--}}
+                                    {{--<button onclick="submitTheForm()" class="" {{--onclick="return confirm('¿Quieres borrar?')"--}}    {{--style="border: 0; Background-color: transparent;">   
+                                            {{--<box-icon name='message-alt-x' border="circle" size="md" color="#D61C4E"></box-icon>
+                                    </button>--}}                                                
+                            </td>
+        
+                            <td>
+                                <a href="{{ url('/certificado/'.$item->tram_id.'/cerGenerator') }}">
+                                    <box-icon name='file-blank' rotate='90' border="circle" size="md" ></box-icon>             {{-- <img src="{{URL::asset('Recursos/iconEdit.png')}}"  style="width: 50%"> --}}
+                                </a>
+                            </td>
+        
+                        </tr>   
+                        @endforeach
+                        
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
             </div>
         </div>
 
-        <table class="table table-striped" style="width:100%" id="myTable" >
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col" >ID</th>
-                    <th scope="col" >Fecha de emisión(update)</th>                      
-                    <th scope="col" >Código de certificado</th>
-                    <th scope="col" >Razón</th>
-                    <th scope="col" >Nombre</th>
-                    <th scope="col" >Apellido</th>
-                    <th scope="col" >Código estudiante</th>
-                    <th scope="col" >Código generado</th>
-                    <th scope="col" >Descripción</th>
-                    <th scope="col" >Nombre del archivo</th>
-                    <th scope="col" >Estado</th>
-                    <th scope="col" >Generar QR</th> {{-- documento --}}
-                    <th scope="col" >Subir archivo</th>
-                    <th scope="col" >Borrar </th>
-                    <th scope="col" >Certificado </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($data as $item)
-                <tr>
-                    <td>{{ $item->tram_id }}</td>
-                    <td>{{ \Carbon\Carbon::parse($item->tram_updated_at)->format('d-m-Y')}}</td>
-                    <td>{{$item->detalldoc_cod2}}</td>
-                    <td>{{$item->car_nombre}}</td>
-                    <td>{{$item->est_nombre}}</td>
-                    <td>{{$item->est_apellido}}</td>
-                    <td>{{$item->est_cod2}}</td>
-                    <td>{{$item->detalldoc_codgen}}</td>
-                    <td>{{$item->tram_obervacion}}</td>
-                    <td style="color: {{ $item->detalldoc_Nomarchivo ? 'green' : 'orange' }}"><b>
-                        {{ $item->detalldoc_Nomarchivo ?: 'N/A' }}</b>
-                    </td>
-                    {{-- <td style="background-color: {{ $item->detalldoc_Nomarchivo ? '#54B435' : 'orange' }}"><b>{{$item->detalldoc_Nomarchivo}}</b></td> --}}
-                    <td>{{$item->tram_estado}}</td>
 
-                    <td> {{-- Generar qr --}}
-                        <a href="#" id="mtd4" class="mtd4" onclick="cambiar4()">
-                            <box-icon name='qr' border="circle" size="md" color="#31C6D4"></box-icon>               {{-- <img src="{{URL::asset('Recursos/iconQRgenerator2.png')}}"  style="width: 50%"> --}}                            
-                        </a>
-                        
-                    </td>
-
-                    <td>    {{-- Editar --}}                        
-                        <a href="{{ url('/certificado/'.$item->tram_id.'/edit') }}">
-                            <box-icon name='edit' border="circle" size="md" ></box-icon>             {{-- <img src="{{URL::asset('Recursos/iconEdit.png')}}"  style="width: 50%"> --}}
-                        </a>
-                        
-                    </td>
-
-                    <td>    {{-- Delete --}}
-                        <form action="{{ url('/certificado/'.$item->tram_id ) }}" method="post">
-                            @csrf    
-                            {{ method_field('DELETE')}}
-                            {{-- @method("DELETE") --}}
-                            
-                            <button type="submit" onclick="return confirm('¿ Estas seguro de eliminar este registro ?')" style="border: 0; Background-color: transparent;" ><box-icon name='message-alt-x' border="circle" size="md" color="#D61C4E"></box-icon ></button>
-                        </form>    
-                            {{--<input type="submit" id="submit-form" value="Submit Form" style="display: none;"/>--}}
-                            {{--<button onclick="submitTheForm()" class="" {{--onclick="return confirm('¿Quieres borrar?')"--}}    {{--style="border: 0; Background-color: transparent;">   
-                                    {{--<box-icon name='message-alt-x' border="circle" size="md" color="#D61C4E"></box-icon>
-                            </button>--}}                                                
-                    </td>
-
-                    <td>
-                        <a href="{{ url('/certificado/'.$item->tram_id.'/cerGenerator') }}">
-                            <box-icon name='file-blank' rotate='90' border="circle" size="md" ></box-icon>             {{-- <img src="{{URL::asset('Recursos/iconEdit.png')}}"  style="width: 50%"> --}}
-                        </a>
-                    </td>
-
-                </tr>   
-                @endforeach
-                
-            </tbody>
-            <tfoot></tfoot>
-        </table>
             
     </div>
+
+
     <script src="{{asset('js/alertMesage.js') }}"></script>
 
     {{-- js for qr creator --}}
