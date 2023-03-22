@@ -21,24 +21,29 @@
                        
                         <div class="input-box">
                             <label for="disabledTextInput" class="form-label">Razón:</label>
-                            <input  disabled type="text" id="disabledTextInput" class="form-control" placeholder="{{$item->car_nombre}}">
+                            <div disabled type="text" id="disabledTextInput" class="form-control">{{$item->car_nombre}}</div>
+                            {{-- <input  disabled type="text" id="disabledTextInput" class="form-control" placeholder="{{$item->car_nombre}}"> --}}
                         </div>                        
                         
                         <div class="input-box">
                             <label for="disabledTextInput" class="form-label">Nombre:</label>
-                            <input disabled type="text" id="disabledTextInput" class="form-control" placeholder="{{$item->est_nombre}}">
+                            <div disabled type="text" id="disabledTextInput" class="form-control">{{$item->est_nombre}}</div>
+                            {{-- <input disabled type="text" id="disabledTextInput" class="form-control" placeholder="{{$item->est_nombre}}"> --}}
                         </div>
                         <div class="input-box">
                             <label for="disabledTextInput" class="form-label">Apellido:</label>
-                            <input disabled type="text" id="disabledTextInput" class="form-control" placeholder="{{$item->est_apellido}}">
+                            <div disabled type="text" id="disabledTextInput" class="form-control">{{$item->est_apellido}}</div>
+                            {{-- <input disabled type="text" id="disabledTextInput" class="form-control" placeholder="{{$item->est_apellido}}"> --}}
                         </div>
                         <div class="input-box">
                             <label for="disabledTextInput" class="form-label">Código de certificado:</label>
-                            <input disabled type="text" id="disabledTextInput" class="form-control" placeholder="{{$item->detalldoc_cod2}}">
+                            <div disabled type="text" id="disabledTextInput" class="form-control">{{$item->detalldoc_cod2}}</div>
+                            {{-- <input disabled type="text" id="disabledTextInput" class="form-control" placeholder="{{$item->detalldoc_cod2}}"> --}}
                         </div>
                         <div class="input-box">
                             <label for="disabledTextInput" class="form-label">Fecha emisión:</label>
-                            <input disabled type="text" id="disabledTextInput" class="form-control" placeholder="{{ \Carbon\Carbon::parse($item->tram_update_at)->format('d-m-Y')}}">
+                            <div disabled type="text" id="disabledTextInput" class="form-control" >{{ \Carbon\Carbon::parse($item->tram_update_at)->format('d-m-Y')}}</div>
+                            {{-- <input disabled type="text" id="disabledTextInput" class="form-control" placeholder="{{ \Carbon\Carbon::parse($item->tram_update_at)->format('d-m-Y')}}"> --}}
                         </div>
                         
                         <div class="download-button">

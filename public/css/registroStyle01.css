@@ -38,13 +38,13 @@
 
 body {
     font-family: 'Quicksand', sans-serif;
-    color: var(--blanco);
+    /* color: var(--blanco); */
 }
 
 
 .container{
     width: 87%;
-    height: 95vh;
+    height: 100vh; 
     background: #Ebeef1;
     padding: 20px;
     transition: max-width .3s ease;
@@ -129,7 +129,7 @@ body {
     background-color: white;
     padding: 20px;
     border-radius: 15px;
-    margin-top: 100px;
+    margin-top: 50px;
 
     vertical-align: middle;
     float: none;
@@ -137,6 +137,8 @@ body {
 
 .table-my-0{
     align-items: center;
+    
+    
 }
 
 
@@ -149,6 +151,8 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
     /*place-content: center;*/
+     overflow-x: auto;
+    
 }
 
 tbody{
@@ -194,4 +198,10 @@ tbody{
     border-bottom: solid 5px #0F362D;
     color: white;
     font-size: 70%;
+}
+
+
+tr:hover td{
+    background-color: #369681;
+    color: white;
 }

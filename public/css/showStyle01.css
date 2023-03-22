@@ -124,19 +124,22 @@ body {
     margin: 4px;
 }
 
-.input-box input {
+.input-box div {
     margin: 0.6rem 0;    
     padding: 0.8rem 1.2rem;    
     border: none;    
-    border-radius: 10px;    
+    border-radius: 10px;
+    background: rgba(236, 234, 233, 0.733);    
+    color: rgb(128, 128, 128);
+    font-size: 90%;   
     /* box-shadow: 1px 1px 6px []#0000001c; */
     
 }
-.input-box input:hover {
+.input-box div:hover {
     background-color: #8be2f175;
 }
     
-.input-box input:focus-visible {
+.input-box div:focus-visible {
     outline: 1px solid #6c63ff;
 }
     

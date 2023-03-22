@@ -80,7 +80,7 @@ class RegistroCertificadoQRController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create()                        // Esta función no se esta usando, dado que se quito la funcionalidad en la vista
     {
         return view('registroCertificado.create',);
     }
@@ -91,7 +91,7 @@ class RegistroCertificadoQRController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request)         // Esta función no se esta usando también, dado que depende de la función anterior
     {
         $data = new RegistroCertificadoQR;
 
@@ -150,7 +150,7 @@ class RegistroCertificadoQRController extends Controller
      * @param  \App\Models\RegistroCertificadoQR  $registroCertificadoQR
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id)   //esta funcion permite subir subir el archivo pdf y editar si lo quiere resubir, además de mostrar algunos otros datos
     {
         $data = DemoRegistroCertificadoQR::join('detalle_documento', 'detalle_documento.detalldoc_id', '=', 'tramite.detalldoc_id')
             ->join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
@@ -186,7 +186,7 @@ class RegistroCertificadoQRController extends Controller
      * @param  \App\Models\RegistroCertificadoQR  $registroCertificadoQR
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id)       // Esta función de pende de la anterior
     {
         $datos = request()->except(['tram_updated_at', '_token', '_method']);
         // $code= $id.substr($request->est_nombre, 0, 2).substr($request->apellido_est, 0, 2);
@@ -222,14 +222,14 @@ class RegistroCertificadoQRController extends Controller
      * @param  \App\Models\RegistroCertificadoQR  $registroCertificadoQR
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) //RegistroCertificadoQR $registroCertificadoQR
+    public function destroy($id)    //esta función elimina un registro
     {
         DemoRegistroCertificadoQR::destroy($id);
         //echo($id);
         return redirect('certificado')->with('eliminar', 'ok');
     }
 
-    public function cerGenerator($id)
+    public function cerGenerator($id)   // esta lo podemos borrar, no afecta en nada
     {
         $data = DemoRegistroCertificadoQR::join('detalle_documento', 'detalle_documento.detalldoc_id', '=', 'tramite.detalldoc_id')
             ->join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')

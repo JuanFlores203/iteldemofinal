@@ -1,6 +1,11 @@
 @extends('layouts.plantilla3')
 
 @section('title','Registro')
+@section('css')
+    <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+    
+    {{-- <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet"> --}}
+@endsection
 
 @section('content')
     <div class="container">
@@ -107,7 +112,7 @@
     </div>
 
 
-    <script src="{{asset('js/alertMesage.js') }}"></script>
+    
 
     {{-- js for qr creator --}}
         <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
@@ -145,21 +150,32 @@
 
     @section('js-dataTable')
         
+        {{-- 1era forma de datatables, sin boostrap, es mas simple --}}
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        
-        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>        
         
         <script>
-            $(document).ready( function () {
-                $('#myTable').DataTable({
-                    scrollX: true,
-                });
-            } );
+            $(document).ready(function () {
+                $('#myTable').DataTable({"lengthMenu": [ [5, 10, 50, -1], [5, 10, 50, "All"] ]});
+            });
         </script>
-        
-    @endsection
 
+        {{-- 2da forma de datatables, pero esta usa boostrap 5 --}} 
+        {{-- 
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable({"lengthMenu": [ [1, 10, 50, -1], [1, 10, 50, "All"] ]});
+            });
+        </script> 
+        --}}
+    
+    @endsection
+    
+    <script src="{{asset('js/alertMesage.js') }}"></script>
     @section('js-sweeAlert')
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -173,7 +189,7 @@
             </script>
         @endif
 
-        <script>
+        <script> //por alguna razón para eliminar no funciona la alerta con esilo
             function submitTheForm(){
                 //event.preventDefault();
 
