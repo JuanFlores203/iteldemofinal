@@ -89,7 +89,7 @@ body {
     display: block;
     width: 4rem;
     height: 0.3rem;
-    background-color: #6c63ff;
+    background-color: #4269bd;
     margin: 0 auto;
     position: absolute;
     border-radius: 10px;
@@ -191,6 +191,7 @@ body {
     }
     .form{
         width: 100%;
+        padding: 2rem;
     }
 }
     
@@ -216,9 +217,19 @@ body {
         flex-direction: column;
         overflow-y: scroll;
         flex-wrap: nowrap;
-        max-height: 10rem;
-        padding-right: 5rem;
+        max-height: 20rem;
+        display: block;
+        /* padding-right: 5rem; */
     }
+
+    @media screen and (max-width: 800px) {
+
+        .input-group {
+            display: block;
+            /* padding-right: 5rem; */
+        }       
+        
 
 }
 
+}

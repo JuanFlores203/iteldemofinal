@@ -50,17 +50,15 @@
                             <button> <a  href="{{url('/download',$item->detalldoc_Nomarchivo)}}"> Descargar </a></button>
                         </div>
                         
-                    @endforeach
-
-                    
+                    @endforeach                    
                 </div>
             </form>
         </div>
 
         <div class="form-image">
             @foreach ($data as $item)
-                {{-- <iframe class="pdf" src="/Archivos/{{$item->documento}}"></iframe>                             nota: cuando el pdf se guarda en la carpeta PUBLIC --}} 
-                <iframe class="pdf" src="{{ asset('storage').'/Archivos/'.$item->detalldoc_Nomarchivo }}"></iframe>                {{--nota: cuando el pdf se guarda en la carpeta STORAGE--}}
+            {{-- <iframe class="pdf" src="/Archivos/{{$item->documento}}"></iframe>                             nota: cuando el pdf se guarda en la carpeta PUBLIC --}} 
+                <iframe class="pdf" src="{{ asset('storage').'/Archivos/'.$item->detalldoc_Nomarchivo }}"></iframe>{{--nota: cuando el pdf se guarda en la carpeta STORAGE--}}
             @endforeach
         </div>
     </div>
@@ -73,8 +71,3 @@
         </ul>
     </div> --}}
 @endsection 
-
-
-
-
-

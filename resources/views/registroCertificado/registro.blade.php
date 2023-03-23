@@ -47,7 +47,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $item)
+                        @forelse ($data as $item)
                         <tr>
                             <td>{{ $item->tram_id }}</td>
                             <td>{{ \Carbon\Carbon::parse($item->tram_updated_at)->format('d-m-Y')}}</td>
@@ -98,8 +98,12 @@
                                 </a>
                             </td>
         
-                        </tr>   
-                        @endforeach
+                        </tr>
+                        @empty
+                            <tr>
+                                <td colspan="15">No hay registros.</td>
+                            </tr>   
+                        @endforelse
                         
                     </tbody>
                     <tfoot></tfoot>
