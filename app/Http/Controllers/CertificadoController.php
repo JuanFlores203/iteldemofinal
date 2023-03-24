@@ -33,7 +33,7 @@ class CertificadoController extends Controller
                                 'estudiante.est_apellido',
                                 'detalle_documento.detalldoc_cod2'
                             ]);
-
+                            
         if($gen_code){
             if(count($data) >= 1){
                 return view('certificado.show', ['code' => $gen_code], compact('data'));

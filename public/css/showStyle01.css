@@ -233,3 +233,20 @@ body {
 }
 
 }
+
+.alertMs-FileNotFound{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #F8D7DA;
+    border: 1px solid #F5C6CB;
+    color: #000000;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.alertMs-FileNotFound span{
+    color: #721C24;
+}
+

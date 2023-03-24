@@ -55,3 +55,5 @@ Route::resource('certificado', RegistroCertificadoQRController::class);
 Route::get('/test/{id}/{card}', [RegistroCertificadoQRController::class, 'generatordocx'])->name('generatordoc');
 
 Route::get('/certificado/{id}/cerGenerator', [RegistroCertificadoQRController::class,'cerGenerator']);  //create
+
+

@@ -446,6 +446,30 @@ class RegistroCertificadoQRController extends Controller
                     'anio' => date('Y')
                 ]);
                 break;
+                
+                case 7:
+                    $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificado-Bach-mec.docx');
+    
+                    $phpWord->setImageValue(
+                        'qrcode',
+                        [
+                            'path' => $path,
+                            'width' => $with,
+                            'height' => $with,
+                            'ratio' => true
+                        ]
+                    );                
+                    $phpWord->setValues([
+                        'nombrecarrera' => $carNombre,
+                        'nombreestudiante' => $estNombre,
+                        'apellidoestudiante' => $estApellido,
+                        'numregistro' => $numRegistro,
+    
+                        'dia' => date('d'),
+                        'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                        'anio' => date('Y')
+                    ]);
+                    break;
 
             default:
                 echo "por defecto";

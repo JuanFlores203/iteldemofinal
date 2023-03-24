@@ -57,10 +57,14 @@
 
         <div class="form-image">
             @foreach ($data as $item)
-            {{-- <iframe class="pdf" src="/Archivos/{{$item->documento}}"></iframe>                             nota: cuando el pdf se guarda en la carpeta PUBLIC --}} 
-                <iframe class="pdf" src="{{ asset('storage').'/Archivos/'.$item->detalldoc_Nomarchivo }}"></iframe>{{--nota: cuando el pdf se guarda en la carpeta STORAGE--}}
+                @if ($item->detalldoc_Nomarchivo && Storage::disk('public')->exists('Archivos/' . $item->detalldoc_Nomarchivo))
+                    <iframe class="pdf" src="{{ asset('storage').'/Archivos/'.$item->detalldoc_Nomarchivo }}"></iframe>
+                @else
+                    <p class="alertMs-FileNotFound"> <span>¡Notificación!: </span> Archivo no encontrado</p>
+                @endif
             @endforeach
         </div>
+        
     </div>
     
     {{-- <div class="container2">
