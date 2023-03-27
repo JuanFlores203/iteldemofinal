@@ -40,14 +40,14 @@
                     @foreach ($data as $item)
                       <tr>
                           <td>{{ $item->tram_id }}</td>
-                          <td>{{ \Carbon\Carbon::parse($item->tram_updated_at)->format('d-m-Y')}}</td>
-                          <td>{{$item->detalldoc_cod2}}</td>
+                          <td>{{ \Carbon\Carbon::parse($item->tram_emision)->format('d-m-Y')}}</td>
+                          <td>{{$item->tram_num_expediente}}</td>
                           <td>{{$item->car_nombre}}</td>
                           <td>{{$item->est_nombre}}</td>
                           <td>{{$item->est_apellido}}</td>
                           <td>{{$item->est_cod2}}</td>
                           <td>{{$item->detalldoc_codgen}}</td>
-                          <td>{{$item->tram_obervacion}}</td>
+                          <td>{{$item->tram_observacion}}</td>
                           <td style="color: {{ $item->detalldoc_Nomarchivo ? 'green' : 'orange' }}"><b>
                               {{ $item->detalldoc_Nomarchivo ?: 'N/A' }}</b>
                           </td>

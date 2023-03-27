@@ -30,7 +30,7 @@
                     <thead class="thead">
                         <tr>
                             <th scope="col" >ID</th>
-                            <th scope="col" >Fecha de emisión(update)</th>                      
+                            <th scope="col" >Fecha de emisión</th>                      
                             <th scope="col" >Código de certificado</th>
                             <th scope="col" >Razón</th>
                             <th scope="col" >Nombre</th>
@@ -50,8 +50,8 @@
                         @forelse ($data as $item)
                         <tr>
                             <td>{{ $item->tram_id }}</td>
-                            <td>{{ \Carbon\Carbon::parse($item->tram_updated_at)->format('d-m-Y')}}</td>
-                            <td>{{$item->detalldoc_cod2}}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->tram_emision)->format('d-m-Y')}}</td>
+                            <td>{{$item->tram_num_expediente}}</td>
                             <td>{{$item->car_nombre}}</td>
                             <td>{{$item->est_nombre}}</td>
                             <td>{{$item->est_apellido}}</td>

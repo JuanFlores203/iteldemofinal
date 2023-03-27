@@ -11,12 +11,12 @@
 
     <div class="input-box">
         <label for="disabledTextInput" class="details">Fecha emisión:</label>
-        <input disabled type="date" id="fecha_emision" value="{{ \Carbon\Carbon::parse($item->tram_updated_at)->format('Y-m-d') }}" name="fecha_emision" class="form-control" placeholder=" " required>
+        <input disabled type="date" id="fecha_emision" value="{{ \Carbon\Carbon::parse($item->tram_emision)->format('Y-m-d') }}" name="fecha_emision" class="form-control" placeholder=" " required>
     </div>                                              
 
     <div class="input-box">
         <label for="disabledTextInput" class="details">Código de certificado:</label>
-        <input disabled type="text" id="certificado_code" value="{{ $item->detalldoc_cod2 }}" name="certificado_code" class="form-control" placeholder=" " required>
+        <input disabled type="text" id="certificado_code" value="{{ $item->tram_num_expediente}}" name="certificado_code" class="form-control" placeholder=" " required>
     </div>
 
     <div class="input-box">
@@ -36,7 +36,7 @@
 
     <div class="input-box">
         <label for="disabledTextInput" class="details">Descripción:</label>
-        <input disabled type="text" id="descripcion" value="{{ $item->tram_obervacion }}" name="descripcion" class="form-control" placeholder="">
+        <input disabled type="text" id="descripcion" value="{{ $item->tram_observacion }}" name="descripcion" class="form-control" placeholder="">
     </div>
 
     {{-- <div class="input-box2">

@@ -18,14 +18,15 @@ class DemoRegistroCertificadoQR extends Model
         'tram_id',
         'tram_estado',
         'est_cod',
-        'tram_observacion',
+        'tram_obServacion',
         'tram_updated_at',
         'detalldoc_Nomarchivo',
         'detalldoc_codgen',
         'car_nombre',
         'est_nombre',
         'est_apellido',
-        'detalledoc_cod2'
+        'tram_emision',
+        'tramite.tram_num_expediente'
     ];
 
 

@@ -26,22 +26,23 @@ class RegistroCertificadoQRController extends Controller
      */
     public function index()
     {
-        $data = DemoRegistroCertificadoQR::join('detalle_documento', 'detalle_documento.detalldoc_id', '=', 'tramite.detalldoc_id')
-            ->join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
+        $data = DemoRegistroCertificadoQR::join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
             ->join('estudiante', 'estudiante.est_cod', '=', 'tramite.est_cod')
-            ->where('tramite.tram_estado', '=', 'culminado')
+            ->where('tramite.tram_estado', '=', 'Para firma')
             ->get([
                 'tramite.tram_id',
                 'tramite.tram_estado',
-                'tramite.tram_obervacion',
-                'tramite.tram_updated_at',
+                'tramite.tram_observacion',
                 'tramite.detalldoc_Nomarchivo',
                 'tramite.detalldoc_codgen',
+                'tramite.tram_emision',
+                'tramite.tram_num_expediente',
+
                 'carrera.car_nombre',
+
                 'estudiante.est_nombre',
                 'estudiante.est_apellido',
-                'estudiante.est_cod2',
-                'detalle_documento.detalldoc_cod2'
+                'estudiante.est_cod2'
             ]);
         // dd($data);
         return view('registroCertificado.registro', compact('data'));
@@ -152,23 +153,24 @@ class RegistroCertificadoQRController extends Controller
      */
     public function edit($id)   //esta funcion permite subir subir el archivo pdf y editar si lo quiere resubir, además de mostrar algunos otros datos
     {
-        $data = DemoRegistroCertificadoQR::join('detalle_documento', 'detalle_documento.detalldoc_id', '=', 'tramite.detalldoc_id')
-            ->join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
+        $data = DemoRegistroCertificadoQR::join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
             ->join('estudiante', 'estudiante.est_cod', '=', 'tramite.est_cod')
             ->where('tramite.tram_id', '=', $id)
             ->get([
                 'tramite.tram_id',
                 'tramite.est_cod',
                 'tramite.tram_estado',
-                'tramite.tram_obervacion',
-                'tramite.tram_updated_at',
+                'tramite.tram_observacion',
                 'tramite.detalldoc_Nomarchivo',
                 'tramite.detalldoc_codgen',
+                'tramite.tram_emision',
+                'tramite.tram_num_expediente',
+
                 'carrera.car_nombre',
+
                 'estudiante.est_nombre',
                 'estudiante.est_apellido',
                 'estudiante.est_cod2',
-                'detalle_documento.detalldoc_cod2'
             ]);
         //echo($RegistroCertificadoQR);
         $data2 = DemoRegistroCertificadoQR::findOrFail($id);
@@ -229,26 +231,26 @@ class RegistroCertificadoQRController extends Controller
         return redirect('certificado')->with('eliminar', 'ok');
     }
 
-    public function cerGenerator($id)   // esta lo podemos borrar, no afecta en nada
+    public function cerGenerator($id)   
     {
-        $data = DemoRegistroCertificadoQR::join('detalle_documento', 'detalle_documento.detalldoc_id', '=', 'tramite.detalldoc_id')
-            ->join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
-            ->join('estudiante', 'estudiante.est_cod', '=', 'tramite.est_cod')
-            ->where('tramite.tram_id', '=', $id)
-            ->get([
-                'tramite.tram_id',
-                'tramite.est_cod',
-                'tramite.tram_estado',
-                'tramite.tram_obervacion',
-                'tramite.tram_updated_at',
-                'tramite.detalldoc_Nomarchivo',
-                'tramite.detalldoc_codgen',
-                'carrera.car_nombre',
-                'estudiante.est_nombre',
-                'estudiante.est_apellido',
-                'estudiante.est_cod2',
-                'detalle_documento.detalldoc_cod2'
-            ]);
+        $data = DemoRegistroCertificadoQR::join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
+                                        ->join('estudiante', 'estudiante.est_cod', '=', 'tramite.est_cod')
+                                        ->where('tramite.tram_id', '=', $id)
+                                        ->get([
+                                            'tramite.tram_id',
+                                            'tramite.tram_estado',
+                                            'tramite.tram_observacion',
+                                            'tramite.detalldoc_Nomarchivo',
+                                            'tramite.detalldoc_codgen',
+                                            'tramite.tram_emision',
+                                            'tramite.tram_num_expediente',
+
+                                            'carrera.car_nombre',
+
+                                            'estudiante.est_nombre',
+                                            'estudiante.est_apellido',
+                                            'estudiante.est_cod2'
+                                        ]);
         //echo($RegistroCertificadoQR);
         $data2 = DemoRegistroCertificadoQR::findOrFail($id);
         return view('registroCertificado.cerGenerator', compact('data2', 'data', 'id'));
@@ -260,30 +262,31 @@ class RegistroCertificadoQRController extends Controller
 
     public function generatordocx($id, $card)
     {
-        $code = democerQR::query()->where('tram_id', $id)->first()->detalldoc_codgen;
-        $data = DemoRegistroCertificadoQR::join('detalle_documento', 'detalle_documento.detalldoc_id', '=', 'tramite.detalldoc_id')
-                                            ->join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
+        // $code = democerQR::query()->where('tram_id', $id)->first()->detalldoc_codgen;
+        $data = DemoRegistroCertificadoQR::join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
                                             ->join('estudiante', 'estudiante.est_cod', '=', 'tramite.est_cod')
                                             ->where('tramite.tram_id', '=', $id)
                                             ->get([
                                                 'tramite.tram_id',
-                                                'tramite.est_cod',
                                                 'tramite.tram_estado',
-                                                'tramite.tram_obervacion',
-                                                'tramite.tram_updated_at',
+                                                'tramite.tram_observacion',
                                                 'tramite.detalldoc_Nomarchivo',
                                                 'tramite.detalldoc_codgen',
+                                                'tramite.tram_emision',
+                                                'tramite.tram_num_expediente',
+
                                                 'carrera.car_nombre',
+
                                                 'estudiante.est_nombre',
                                                 'estudiante.est_apellido',
-                                                'estudiante.est_cod2',
-                                                'detalle_documento.detalldoc_cod2'
+                                                'estudiante.est_cod2'
                                             ]);
         //Los parametro que ingresare mas adelante en el certificado en MSword
             $estNombre   = $data[0]->est_nombre;
             $estApellido = $data[0]->est_apellido;
             $carNombre   = $data[0]->car_nombre;                                            
-            $numRegistro = $data[0]->detalldoc_cod2;
+            $numRegistro = $data[0]->tram_num_expediente;
+            $code        = $data[0]->detalldoc_codgen;
 
         // Para obtener el mes actual en texto y español
             $dateFormatter = new IntlDateFormatter('es_ES', IntlDateFormatter::NONE, IntlDateFormatter::NONE, null, null, 'MMMM');
@@ -447,29 +450,29 @@ class RegistroCertificadoQRController extends Controller
                 ]);
                 break;
                 
-                case 7:
-                    $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificado-Bach-mec.docx');
-    
-                    $phpWord->setImageValue(
-                        'qrcode',
-                        [
-                            'path' => $path,
-                            'width' => $with,
-                            'height' => $with,
-                            'ratio' => true
-                        ]
-                    );                
-                    $phpWord->setValues([
-                        'nombrecarrera' => $carNombre,
-                        'nombreestudiante' => $estNombre,
-                        'apellidoestudiante' => $estApellido,
-                        'numregistro' => $numRegistro,
-    
-                        'dia' => date('d'),
-                        'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
-                        'anio' => date('Y')
-                    ]);
-                    break;
+            case 7:
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificado-Bach-mec.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
+                break;
 
             default:
                 echo "por defecto";

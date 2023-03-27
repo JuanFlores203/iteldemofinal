@@ -18,8 +18,7 @@ class CertificadoController extends Controller
     }
     public function show($gen_code = null){             // form donde muestro la consulta de si el certificado es valido o no
         
-        $data = democerQR::join('detalle_documento', 'detalle_documento.detalldoc_id', '=', 'tramite.detalldoc_id')
-                        ->join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
+        $data = democerQR::join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
                         ->join('estudiante', 'estudiante.est_cod', '=', 'tramite.est_cod')
                         ->where('tramite.detalldoc_codgen',$gen_code)
                         ->get([
@@ -28,10 +27,13 @@ class CertificadoController extends Controller
                                 'tramite.tram_updated_at',
                                 'tramite.detalldoc_Nomarchivo',
                                 'tramite.detalldoc_codgen',
+                                'tramite.tram_emision',
+                                'tramite.tram_num_expediente',
+
                                 'carrera.car_nombre',
+
                                 'estudiante.est_nombre',
-                                'estudiante.est_apellido',
-                                'detalle_documento.detalldoc_cod2'
+                                'estudiante.est_apellido'
                             ]);
                             
         if($gen_code){
