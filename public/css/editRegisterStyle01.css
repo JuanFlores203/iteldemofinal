@@ -1,71 +1,109 @@
+/* FONTS GOOGLE */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
 
+/* VARIABLES */
 
+:root {
+    --blanco: #E0E0E0;
+    --azul-opacidad: #184463;
+    --bg-menu: #003053;
+    --bg-body: #C7E1FF;
+}
 
+/* GENERALES */
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
 }
 
-body{
-
-    display: flex;    
-    height: 100%;  
-    justify-content: center;    
-    align-items: center;   
-    background: #0c0ce94d;
+body {
+    font-family: 'Quicksand', sans-serif;
+    /* color: var(--blanco); */
 }
+
+
 .container{
-    display: flex;
-    flex-direction: column;
-    margin-top: 4%;
-    margin-bottom: 4%;
-
-}
-.sub-container{
-    max-width: 700px;
-    width: 100%;
-    background: #fff;
-    padding: 25px 30px;
-    border-radius: 5px;
-    
-}
-.container .title{
-    font-size: 25px;
-    font-weight: 500;
-    position: relative;    
-}
-.container .title::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 4px;
-    width: 30px;
-    background: #9B59B6;
-    
+    width: 87%;
+    /*height: 100vh; */
+    background: #Ebeef1;
+    padding: 20px;
+    transition: max-width .3s ease;
+    float: right; 
 }
 
-.form-image {
-    max-height: 400px;
-    height: 400px;
-    max-width: 700px;
+.container-seccion-titulo{
+    width: 350px;
+    /* height: 10vh; */
+    background-color: var(--bg-menu);
+    padding: 15px;
+    border-radius: 15px;
+    float: left;   
+}
+
+.container-seccion-titulo h4{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+    color: white;
+    width: auto;
+}
+.container-seccion-menu2{
+    width: auto;
+    height: 10vh;
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    float: right;
+
+}
+@media (max-width: 767px) {
+    .container-seccion-titulo{
+        width: 70%;
+        padding: 10px;
+    }
+    
+    .container-seccion-titulo h4{
+        /* font-size: 16px; */
+        text-align: center;
+    }
+}
+
+
+
+.container-seccion{
     width: 100%;
-    display: block;
-    justify-content: center;
+    height: AUTO;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 100px;
+
+    display:flex;
+    
+    justify-content:space-between;
+    /* align-items:center; */
+}
+
+.table-my-0{
     align-items: center;
-    background-color: #fde3a7d7;
-    padding: 1rem;    
-} 
+}
 
-.form-image .pdf{
+.forms {
     width: 100%;
-    height: 100%;
-}   
-
+    height: auto;
+    /* font-size: 91%; */
+    background: #f0f3f5;
+    border-radius: 15px;
+    /* border: 2px solid #Ebeef1; */
+    /* margin-top: 20px;
+    margin-bottom: 20px; */
+    /*place-content: center;*/
+    overflow-x: auto;
+    margin: 1%;
+    padding: 2%;
+    
+}
 .container form .user-details{
     display: flex;
     flex-wrap: wrap;
@@ -82,12 +120,12 @@ form .razon-details .input-box{
     
 }
 
-.user-details .input-box .details{
+.user-details, .razon-details .input-box .details{
     display: block;
     font-weight: 500;
     margin-bottom: 5px;
 }
-.user-details .input-box2 .details{
+.input-box2 .details{
     font-weight: 500;
     margin-bottom: 5px;
 }
@@ -126,6 +164,9 @@ form .razon-details .input-box{
     transition: all 0.3s ease;
 }
 
+.form2{
+    background: #e4e7e9;
+}
 form .button{
     height: 45px;
     margin: 45px 0;
@@ -150,34 +191,54 @@ form .button input:hover{
     cursor: pointer;
 }
 
-.titles{
-    display: flex;
-    align-items: center;
-    justify-content: space-between
 
+.form-image {
+    width: 100%;
+    height: auto;
+    /* display: block; */    
+    background-color: #fde3a7d7;
+    padding: 1rem;    
+    overflow-x: auto; 
+    border-radius: 15px;   
+    
 }
-.titles .sub-title{
-    align-content: right;
 
-}
-@media (max-width:584px){
-    .container{
-        max-width: 100%;
+.form-image .pdf{
+    width: 100%;
+    height: 100%;
+} 
+
+@media (max-width: 767px) {
+    .container-seccion{
+        flex-wrap:wrap;
+    }
+    .form-image {
+       height: 100%;    
+        
+    }
+    .form-image .pdf{
+        width: auto;
+        height: 200px;
+        overflow-y: auto;
+    } 
+    .forms form .user-details{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px 0 12px 0;
+        flex-direction: column;
     }
     form .user-details .input-box{
-        margin-bottom: 15px;
-        width: 100%;
+        width: auto;
     }
-        
-    form .razon-details{
-        width: 100%;
-    }
-    .container form .user-details, .razon-details{
-        max-height: 300px;
+
+    .form1{
+        flex-direction: column;
         overflow-y: scroll;
+        flex-wrap: nowrap;
+        max-height: 20rem;
+        display: block;
     }
-    .user-details::-webkit-scrollbar{
-        width: 0;
-    }
-        
+ 
+
 }
