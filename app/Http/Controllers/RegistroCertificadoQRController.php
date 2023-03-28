@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RegistroCertificadoQR;
+//use App\Models\RegistroCertificadoQR;
 use App\Models\DemoRegistroCertificadoQR;
 use App\Models\democerQR;
 
@@ -94,7 +94,7 @@ class RegistroCertificadoQRController extends Controller
      */
     public function store(Request $request)         // Esta función no se esta usando también, dado que depende de la función anterior
     {
-        $data = new RegistroCertificadoQR;
+        $data = new DemoRegistroCertificadoQR;
 
         $file = $request->documento;
         if (empty($file)) {
@@ -140,7 +140,7 @@ class RegistroCertificadoQRController extends Controller
      * @param  \App\Models\RegistroCertificadoQR  $registroCertificadoQR
      * @return \Illuminate\Http\Response
      */
-    public function show(RegistroCertificadoQR $registroCertificadoQR)
+    public function show( $registroCertificadoQR)
     {
         //
     }
@@ -227,7 +227,6 @@ class RegistroCertificadoQRController extends Controller
     public function destroy($id)    //esta función elimina un registro
     {
         DemoRegistroCertificadoQR::destroy($id);
-        //echo($id);
         return redirect('certificado')->with('eliminar', 'ok');
     }
 
@@ -251,12 +250,10 @@ class RegistroCertificadoQRController extends Controller
                                             'estudiante.est_apellido',
                                             'estudiante.est_cod2'
                                         ]);
-        //echo($RegistroCertificadoQR);
         $data2 = DemoRegistroCertificadoQR::findOrFail($id);
         return view('registroCertificado.cerGenerator', compact('data2', 'data', 'id'));
 
         //$data = DemoRegistroCertificadoQR::findOrFail($id);
-
         //return view('registroCertificado.edit', compact('data'));
     }
 
@@ -474,6 +471,147 @@ class RegistroCertificadoQRController extends Controller
                 ]);
                 break;
 
+            case 8:
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificado-Curso-Libre.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
+                break;
+            case 9:
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificado-Tramite-Documentario.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
+                break;
+            case 10:
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_diploma-SAEJ.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
+                break;
+
+            case 11:
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_certificado-Auxiliar-Contable.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
+                break;
+
+            case 12:
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla-certificado-Cadista.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
+                break;
+
+            case 13:
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_diploma-Asis-Contable.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
+                break;
             default:
                 echo "por defecto";
         }
