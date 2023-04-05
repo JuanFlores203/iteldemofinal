@@ -258,91 +258,118 @@ class RegistroCertificadoQRController extends Controller
     }
 
     public function generatordocx($id, $card)
-    {   
+    {
         // $code = democerQR::query()->where('tram_id', $id)->first()->detalldoc_codgen;
         $data = DemoRegistroCertificadoQR::join('carrera', 'carrera.car_cod', '=', 'tramite.car_cod')
                                             ->join('estudiante', 'estudiante.est_cod', '=', 'tramite.est_cod')
-                                            ->where('tramite.tram_id', $id)
-                                            ->first([
+                                            ->where('tramite.tram_id', '=', $id)
+                                            ->get([
+                                                'tramite.tram_id',
                                                 'tramite.tram_estado',
                                                 'tramite.tram_observacion',
                                                 'tramite.detalldoc_Nomarchivo',
                                                 'tramite.detalldoc_codgen',
                                                 'tramite.tram_emision',
                                                 'tramite.tram_num_expediente',
+
                                                 'carrera.car_nombre',
+
                                                 'estudiante.est_nombre',
                                                 'estudiante.est_apellido',
-                                                'estudiante.est_cod2',
+                                                'estudiante.est_cod2'
                                             ]);
         //Los parametro que ingresare mas adelante en el certificado en MSword
-            $estNombre = $data->est_nombre;
-            $estApellido = $data->est_apellido;
-            $carNombre = $data->car_nombre;
-            $numRegistro = $data->tram_num_expediente;
-            $code = $data->detalldoc_codgen;
+            $estNombre   = $data[0]->est_nombre;
+            $estApellido = $data[0]->est_apellido;
+            $carNombre   = $data[0]->car_nombre;                                            
+            $numRegistro = $data[0]->tram_num_expediente;
+            $code        = $data[0]->detalldoc_codgen;
+
         // Para obtener el mes actual en texto y español
             $dateFormatter = new IntlDateFormatter('es_ES', IntlDateFormatter::NONE, IntlDateFormatter::NONE, null, null, 'MMMM');
             $mes_actual = $dateFormatter->format(new DateTime());
-    
+        
         // Para generar el QR eh insertarlo mas adelante en el MSword
-        $with = 110;                                            // dimensiones del qr en px
+        $with = 110;
 
-        $image = QrCode::format('png')
-            ->size($with)
-            ->margin(1)
-            ->generate('http://tramitesitel.unjbg.edu.pe/certificado/validacion/' . $code);
-    
-        $output_file = time() . '.png';                         // ejem 019720317209.png 
-    
+        $image =
+                QrCode::format('png')
+                ->size($with)
+                ->margin(1)
+                ->generate('http://tramitesitel.unjbg.edu.pe/certificado/validacion/' . $code);
+
+        $output_file = time() . '.png';
+        //019720317209.png
+
         Storage::disk('public')->put($output_file, $image);
-    
+
         $path = Storage::path('public/' . $output_file);
         // C:\Users\victo\Documents\projects\iteldemofinal\storage\app\public\
-    
-        $plantilla = '';
+
         switch ($card) {
-            case 1:
-                $plantilla = 'plantilla/plantilla_diploma.docx';
+            case 1:                
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_diploma.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
+
                 break;
             case 2:
-                $plantilla = 'plantilla/plantilla_diploma-Asis-Contable.docx';
+                
+                $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('plantilla/plantilla_diploma-Asis-Contable.docx');
+
+                $phpWord->setImageValue(
+                    'qrcode',
+                    [
+                        'path' => $path,
+                        'width' => $with,
+                        'height' => $with,
+                        'ratio' => true
+                    ]
+                );                
+                $phpWord->setValues([
+                    'nombrecarrera' => $carNombre,
+                    'nombreestudiante' => $estNombre,
+                    'apellidoestudiante' => $estApellido,
+                    'numregistro' => $numRegistro,
+
+                    'dia' => date('d'),
+                    'mes' => $mes_actual,         // para obtener el mes en texto en lugar de numero
+                    'anio' => date('Y')
+                ]);
                 break;
             default:
-                echo "Plantilla no encontrada";
+                echo "por defecto";
         }
-    
-        $phpWord = new \PhpOffice\PhpWord\TemplateProcessor($plantilla);
-    
-        $phpWord->setImageValue(
-            'qrcode',
-            [
-                'path' => $path,
-                'width' => $with,
-                'height' => $with,
-                'ratio' => true,
-            ]
-        );
-    
-        $phpWord->setValues([
-            'nombrecarrera' => $carNombre,
-            'nombreestudiante' => $estNombre,
-            'apellidoestudiante' => $estApellido,
-            'numregistro' => $numRegistro,
-            'dia' => date('d'),
-            'mes' => $mes_actual,
-            'anio' => date('Y'),
-        ]);
-        
 
-        // Nombre del archivo .docx
-        $nombre = time() . '.docx';
+       
+
+            // Nombre del archivo .docx
+            $nombre = time() . '.docx';
+
+            $phpWord->saveAs($nombre);
     
-        $phpWord->saveAs($nombre);
+            //Funcion para eliminar el archivo png del codigo QR
+            Storage::delete('public/' . $output_file);
     
-        //Funcion para eliminar el archivo png del codigo QR
-        Storage::delete('public/' . $output_file);
-    
-        return response()->download($nombre)->deleteFileAfterSend(true);
+            return response()->download($nombre)->deleteFileAfterSend(true);
+
     }
 }

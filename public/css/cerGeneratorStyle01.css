@@ -200,38 +200,49 @@ body {
     justify-content: center;
     align-items: stretch;
     padding-top: 2%;
+    
+    /* background: #439A97; */
 }
 
-.card {
+.cards {
     display: flex;
     width: 100%; /* Tarjetas ocupan el ancho completo del contenedor */
-    max-width: 220px; /* Ancho máximo de 400px para evitar que se vean demasiado grandes en pantallas grandes */
+    max-width: 600px; /* Ancho máximo de 400px para evitar que se vean demasiado grandes en pantallas grandes */
+    width: 500px;
+    padding-block: 0.5rem;
     margin: 10px;
-    background-color: white;
+    
+    background-color: #62B6B7;
+    
     border-radius: 0.25rem;
     box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
     flex-direction: column;
     overflow: hidden;
 }
+.cards h2{
+    color: #414752;
+    text-align: center;
+    margin-bottom: 5%;
+}
 
 @media (min-width: 576px) {
   /* Pantallas más grandes que 576px */
-    .card {
-        width: 45%; /* Tarjetas ocupan el 45% del ancho del contenedor */
+    .cards {
+        width: 25%; /* Tarjetas ocupan el 45% del ancho del contenedor */
     }
 }
 
 @media (min-width: 768px) {
   /* Pantallas más grandes que 768px */
-    .card {
+    .cards {
       width: 30%; /* Tarjetas ocupan el 30% del ancho del contenedor */
     }
 }
 
 @media (min-width: 992px) {
   /* Pantallas más grandes que 992px */
-    .card {
-      width: 23%; /* Tarjetas ocupan el 23% del ancho del contenedor */
+    .cards {
+      width: 45%; /* Tarjetas ocupan el 23% del ancho del contenedor */
     }
 }
 
@@ -240,16 +251,8 @@ body {
     width: 100%;
 }
 
-.card-body {
-    flex: 1;
-    margin: 5%;
-}
 
-.card-title{
-    color: #414752;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-}
+
 
 .card-text{
     color: #414752;
@@ -257,20 +260,59 @@ body {
     margin-bottom: 10px;
 }
 
+.card-body {
+    position: relative;
+    display: inline-flex;
+    margin: 1%;
+    padding: 1%;
+    background: #97DECE;
+    border-radius: 0.25rem;
+}
+
+.card-title{
+    color: #414752;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    width: 85%;
+}
+
 .boton-card {
-    display: block;
-    width: 100%; 
-    padding: 10px 20px;
+    display: flex;
+    /* float: right; */
+    width: 15%;
+    /* padding: 6px 18px;*/
     font-size: 0.8rem;
     font-weight: bold;
     color: #fff;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     background-color: #28a745;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+    .card-title {
+        margin-right: 30px;
+    }
+
+    .boton-card {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        margin-right: 10px;
+    }
+
+    .container-cards {
+        height: 400px;
+        
+        overflow-y: scroll;
+    }
 }
 
 .boton-card:hover {
