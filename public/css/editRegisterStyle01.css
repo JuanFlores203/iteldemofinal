@@ -33,7 +33,7 @@ body {
     float: right; 
 }
 
-.container-seccion-titulo{
+.container-seccion-tituloJJ{
     width: 350px;
     /* height: 10vh; */
     background-color: var(--bg-menu);
@@ -42,13 +42,13 @@ body {
     float: left;   
 }
 
-.container-seccion-titulo h4{
+.container-seccion-tituloJJ h4{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 120%;
     color: white;
     width: auto;
 }
-.container-seccion-menu2{
+.container-seccion-menu2JJ{
     width: auto;
     height: 10vh;
     background-color: white;
@@ -58,12 +58,12 @@ body {
 
 }
 @media (max-width: 767px) {
-    .container-seccion-titulo{
+    .container-seccion-tituloJJ{
         width: 70%;
         padding: 10px;
     }
     
-    .container-seccion-titulo h4{
+    .container-seccion-tituloJJ h4{
         /* font-size: 16px; */
         text-align: center;
     }
@@ -71,7 +71,7 @@ body {
 
 
 
-.container-seccion{
+.container-seccionJJ{
     width: 100%;
     height: AUTO;
     background-color: white;
@@ -85,11 +85,11 @@ body {
     /* align-items:center; */
 }
 
-.table-my-0{
+.table-my-0JJ{
     align-items: center;
 }
 
-.forms {
+.formsJJ {
     width: 100%;
     height: auto;
     /* font-size: 91%; */
@@ -104,33 +104,33 @@ body {
     padding: 2%;
     
 }
-.container form .user-details{
+.container form .user-detailsJJ{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 20px 0 12px 0;
 }
 
-form .user-details .input-box{
+form .user-detailsJJ .input-boxJJ{
     margin-bottom: 15px;
     width: calc(100% / 2 - 20px);
 }
-form .razon-details .input-box{
+form .razon-detailsJJ .input-boxJJ{
     margin-top: 15px;
     
 }
 
-.user-details, .razon-details .input-box .details{
+.user-detailsJJ, .razon-detailsJJ .input-boxJJ .detailsJJ{
     display: block;
     font-weight: 500;
     margin-bottom: 5px;
 }
-.input-box2 .details{
+.input-box2JJ .detailsJJ{
     font-weight: 500;
     margin-bottom: 5px;
 }
 
-.user-details .input-box input{
+.user-detailsJJ .input-boxJJ input{
     height: 45px;
     width: 100%;
     outline: none;
@@ -142,17 +142,17 @@ form .razon-details .input-box{
     transition: all 0.3s ease;
 }
 
-.user-details .input-box input:focus, .razon-details .input-box input:focus,
-.user-details .input-box input:valid, .razon-details .input-box input:valid{
+.user-detailsJJ .input-boxJJ input:focus, .razon-detailsJJ .input-boxJJ input:focus,
+.user-detailsJJ .input-boxJJ input:valid, .razon-detailsJJ .input-boxJJ input:valid{
     border-color: #9B59B6;
 }
 
-.razon-details .input-box .details{
+.razon-detailsJJ .input-boxJJ .detailsJJ{
     display: block;
     font-weight: 500;
     margin-bottom: Spx;
 }
-.razon-details .input-box input{
+.razon-detailsJJ .input-boxJJ input{
     height: 45px;
     width: 100%;
     outline: none;
@@ -167,12 +167,12 @@ form .razon-details .input-box{
 .form2{
     background: #e4e7e9;
 }
-form .button{
+form .buttonJJ{
     height: 45px;
     margin: 45px 0;
 }
     
-form .button input{
+form .buttonJJ input{
 height: 100%;
 width: 100%;
 outline: none;
@@ -186,13 +186,13 @@ background: #7fc32d;
 text-align: center;
 }
 
-form .button input:hover{
+form .buttonJJ input:hover{
     background: #a3cc55;
     cursor: pointer;
 }
 
 
-.form-image {
+.form-imageJJ {
     width: 100%;
     height: auto;
     /* display: block; */    
@@ -203,32 +203,32 @@ form .button input:hover{
     
 }
 
-.form-image .pdf{
+.form-imageJJ .pdf{
     width: 100%;
     height: 100%;
 } 
 
 @media (max-width: 767px) {
-    .container-seccion{
+    .container-seccionJJ{
         flex-wrap:wrap;
     }
-    .form-image {
+    .form-imageJJ {
        height: 100%;    
         
     }
-    .form-image .pdf{
+    .form-imageJJ .pdf{
         width: auto;
         height: 200px;
         overflow-y: auto;
     } 
-    .forms form .user-details{
+    .formsJJ form .user-detailsJJ{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         margin: 20px 0 12px 0;
         flex-direction: column;
     }
-    form .user-details .input-box{
+    form .user-detailsJJ .input-boxJJ{
         width: auto;
     }
 

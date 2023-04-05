@@ -1,40 +1,40 @@
 @foreach ($data as $item)
 
-<div class="razon-details">
-    <div class="input-box">
+<div class="razon-detailsJJ">
+    <div class="input-boxJJ">
         <label for="disabledTextInput" class="details">Razón:</label>
         <input disabled type="text" id="razon" value="{{ $item->car_nombre }}" name="razon" class="form-control" placeholder="" required>
     </div>
 </div>
 
-<div class="user-details">
+<div class="user-detailsJJ">
 
-    <div class="input-box">
+    <div class="input-boxJJ">
         <label for="disabledTextInput" class="details">Fecha emisión:</label>
         <input disabled type="date" id="fecha_emision" value="{{ \Carbon\Carbon::parse($item->tram_emision)->format('Y-m-d') }}" name="fecha_emision" class="form-control" placeholder=" " required>
     </div>                                              
 
-    <div class="input-box">
+    <div class="input-boxJJ">
         <label for="disabledTextInput" class="details">Código de certificado:</label>
         <input disabled type="text" id="certificado_code" value="{{ $item->tram_num_expediente}}" name="certificado_code" class="form-control" placeholder=" " required>
     </div>
 
-    <div class="input-box">
+    <div class="input-boxJJ">
         <label for="disabledTextInput" class="details">Nombre:</label>
         <input disabled type="text" id="nombre_est" value="{{ $item->est_nombre }}" name="nombre_est" class="form-control" placeholder="" required>
     </div>
 
-    <div class="input-box">
+    <div class="input-boxJJ">
         <label for="disabledTextInput" class="details">Apellido:</label>
         <input disabled type="text" id="apellido_est" value="{{ $item->est_apellido }}" name="apellido_est" class="form-control" placeholder="" required>
     </div>
 
-    <div class="input-box">
+    <div class="input-boxJJ">
         <label for="disabledTextInput" class="details">Código estudiante:</label>
         <input disabled type="text" id="estudiante_code" value="{{$item->est_cod2}}" name="estudiante_code" class="form-control" placeholder="" required>
     </div>
 
-    <div class="input-box">
+    <div class="input-boxJJ">
         <label for="disabledTextInput" class="details">Descripción:</label>
         <input disabled type="text" id="descripcion" value="{{ $item->tram_observacion }}" name="descripcion" class="form-control" placeholder="">
     </div>

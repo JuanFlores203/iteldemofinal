@@ -14,21 +14,21 @@
 </head>
 <body>
     <div class="container">
-        <div class="container-seccion-titulo">
+        <div class="container-seccion-tituloJJ">
             <br>
             <h4 class="navbar-brand">SUBIR ARCHIVO</h4>          
             <br>  
         </div>
 
-        <div class="container-seccion-menu2">
+        <div class="container-seccion-menu2JJ">
             <a href="{{ url('/certificado/') }}" id="mtd4" class="mtd4" onclick="cambiar4()">
               <box-icon name='x-circle' border="circle" size="md" color="#D61C4E"></box-icon>
             </a>
         </div>       
 
-        <div class="container-seccion">
+        <div class="container-seccionJJ">
             
-            <div class="forms">
+            <div class="formsJJ">
                 
 
                 <form class="form1">
@@ -41,11 +41,11 @@
                         @csrf    
                         {{ method_field('PATCH') }} 
                         <div class="input-box2">
-                            <label for="disabledTextInput" class="details">Archivo:</label> <br>
+                            <label for="disabledTextInput" class="detailsJJ">Archivo:</label> <br>
                             <input type="file" id="detalldoc_Nomarchivo" value="{{ $data2->detalldoc_Nomarchivo }}" name="detalldoc_Nomarchivo" class="form-control-file" >
                         </div> 
                         
-                        <div class="button">
+                        <div class="buttonJJ">
                             <input type="submit" class="btn btn-success" value="Guardar" id="submit-form-edit" style="display: none;"">
                             <input onclick="submitTheForm()" class="btn btn-success" value="Guardar">
                         </div>                            
@@ -53,7 +53,7 @@
                         
                 </form>
             </div>
-            <div class="form-image">
+            <div class="form-imageJJ">
                 {{-- <iframe class="pdf" src="/Archivos/{{ $RegistroCertificadoQR->documento }}"></iframe>                     nota: cuando el pdf se guarda en la carpeta PUBLIC --}} 
                 <iframe class="pdf" src="{{asset('storage').'/Archivos/'.$data2->detalldoc_Nomarchivo }}"></iframe>  {{--nota: cuando el pdf se guarda en la carpeta STORAGE--}}
                 

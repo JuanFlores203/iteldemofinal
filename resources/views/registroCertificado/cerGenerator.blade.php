@@ -5,22 +5,22 @@
 @section('content')
   <div class="container">
 
-      <div class="container-seccion-titulo">
-        <h4 class="navbar-brand">Generador de certificado</h4>
+      <div class="container-seccion-tituloJJ">
+        <h4 class="navbar-brandJJ">Generador de certificado</h4>
       </div>
 
-      <div class="container-seccion-menu2">
+      <div class="container-seccion-menu2JJ">
 
         <a href="{{ url('/certificado/') }}" id="mtd4" class="mtd4" onclick="cambiar4()">
           <box-icon name='x-circle' border="circle" size="md" color="#D61C4E"></box-icon>
         </a>
       </div>
 
-      <div class="container-seccion" >
+      <div class="container-seccionJJ" >
 
 
-          <div class="container-table" role="grid" aria-describedby="dataTable_info" style="overflow-x: auto;">
-            <table class="table-my-0" id="myTable">
+          <div class="container-tableJJ" role="grid" aria-describedby="dataTable_info" style="overflow-x: auto;">
+            <table class="table-my-0JJ" id="myTable">
                 <thead class="thead">
                     <tr>
                         <th scope="col" >ID</th>

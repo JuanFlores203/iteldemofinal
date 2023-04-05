@@ -9,7 +9,7 @@
 
 @section('content')
     <div class="container">
-        <div class="container-seccion-titulo">
+        <div class="container-seccion-tituloJJ">
             <br>
             <h4 class="navbar-brand">REGISTRO DE CERTIFICADOS</h4>          
             <br>  
@@ -24,9 +24,9 @@
 
         </div>
 
-        <div class="container-seccion">
-            <div class="container-table">
-                <table class="table  table-my-0" id="myTable" >
+        <div class="container-seccionJJ">
+            <div class="container-tableJJ">
+                <table class="table  table-my-0JJ" id="myTable" >
                     <thead class="thead">
                         <tr>
                             <th scope="col" >ID</th>
@@ -84,7 +84,7 @@
                                     {{ method_field('DELETE')}}
                                     {{-- @method("DELETE") --}}
                                     
-                                    <button class="btn-Eliminar" type="submit" onclick="return confirm('¿ Estas seguro de eliminar este registro ?')"  ><box-icon name='message-alt-x' border="circle" size="md" color="#D61C4E"></box-icon ></button>
+                                    <button class="btn-EliminarJJ" type="submit" onclick="return confirm('¿ Estas seguro de eliminar este registro ?')"  ><box-icon name='message-alt-x' border="circle" size="md" color="#D61C4E"></box-icon ></button>
                                 </form>    
                                     {{--<input type="submit" id="submit-form" value="Submit Form" style="display: none;"/>--}}
                                     {{--<button onclick="submitTheForm()" class="" {{--onclick="return confirm('¿Quieres borrar?')"--}}    {{--style="border: 0; Background-color: transparent;">   
@@ -131,7 +131,7 @@
                         
                         new QRious({
                             element: $imagen,
-                            value: "http://localhost:8000/certificado/validacion/"+gen_code, // La URL o el texto
+                            value: "http://tramitesitel.unjbg.edu.pe/certificado/validacion/"+gen_code, // La URL o el texto
                             size: 400,
                             backgroundAlpha: 0, // 0 para fondo transparente
                             foreground: "black", // Color del QR
