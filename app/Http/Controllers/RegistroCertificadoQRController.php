@@ -303,10 +303,59 @@ class RegistroCertificadoQRController extends Controller
         $plantilla = '';
         switch ($card) {
             case 1:
-                $plantilla = 'plantilla/plantilla_diploma.docx';
+                $plantilla = 'plantilla/CERTIFICADO CO-CURRICULAR C.S. DE LA SALUD.docx';
                 break;
             case 2:
-                $plantilla = 'plantilla/plantilla_diploma-Asis-Contable.docx';
+                $plantilla = 'plantilla/CERTIFICADO CO-CURRICULAR E.P. ALIMENTARIAS.docx';
+                break;
+            case 3:
+                $plantilla = 'plantilla/CERTIFICADO CO-CURRICULAR E.P. DERECHO.docx';
+                break;
+            case 4:
+                $plantilla = 'plantilla/CERTIFICADO CO-CURRICULAR E.P. ING. AMBIENTAL.docx';
+                break;
+            case 5:
+                $plantilla = 'plantilla/CERTIFICADO CO-CURRICULAR E.P. MECÁNICA.docx';
+                break;
+            case 6:
+                $plantilla = 'plantilla/CERTIFICADO CO-CURRICULAR FLCJ.docx';
+                break;
+            
+            
+            case 11:
+                $plantilla = 'plantilla/DIPLOMA AIIA I TÉCNICO CADISTA.docx';
+                break;
+            case 12:
+                $plantilla = 'plantilla/DIPLOMA AIIA II TÉCNICO EN INGENIERÍA Y ARQUITECTURA.docx';
+                break;
+
+            case 13:
+                $plantilla = 'plantilla/DIPLOMA SAEJ I SECRETARIA RECEPCIONISTA.docx';
+                break;
+
+            case 14:
+                $plantilla = 'plantilla/DIPLOMA SAEJ II SECRETARIA ADMINISTRATIVA.docx';
+                break;
+            case 15:
+                $plantilla = 'plantilla/DIPLOMA SAEJ III ASISTENTE EJECUTIVA.docx';
+                break;
+            case 16:
+                $plantilla = 'plantilla/DIPLOMA TCC I LUYO AUXILIAR CONTABLE.docx';
+                break;
+            case 17:
+                $plantilla = 'plantilla/DIPLOMA TCC II ASISTENTE CONTABLE & FINANCIERO.docx';
+                break;
+            case 18:
+                $plantilla = 'plantilla/DIPLOMA TCEI I TÉCNICO EN PROGRAMACIÓN Y BASE DE DATOS.docx';
+                break;
+            case 19:
+                $plantilla = 'plantilla/DIPLOMA TCEI II TÉCNICO EN PROGRAMACIÓN WEB.docx';
+                break;
+            case 20:
+                $plantilla = 'plantilla/DIPLOMA TDG I AUXILIAR EN DISEÑO GRÁFICO VECTORIAL.docx';
+                break;
+            case 21:
+                $plantilla = 'plantilla/DIPLOMA TDG II EXPERTO EN EDICIÓN Y MONTAJE DIGITAL.docx';
                 break;
             default:
                 echo "Plantilla no encontrada";
